@@ -61,43 +61,51 @@ Review and adjust `.env` parameters as needed:
 | `ACCESS_TOKEN_EXPIRATION` | Access token lifetime in minutes | `1440` (24 hours) |
 | `DB_URL` | Async PostgreSQL connection string | `postgresql+asyncpg://postgres:postgres@localhost:5432/fastapi_db` |
 
-### 3. Start Local Database (Optional via Docker)
+### 3. Running the Project
 
-Start a local PostgreSQL 18 instance with Docker Compose:
+You can run the project either using **Docker Compose** (full-stack with zero local setup) or natively using **uv**.
 
-```bash
-docker compose up -d
-```
+#### Option A: Full-Stack with Docker Compose (Recommended for Quick Start)
 
-### 4. Install Dependencies
-
-Install all runtime and development dependencies:
+Run the FastAPI application, automatic database migrations, and PostgreSQL 18 in a single command:
 
 ```bash
-uv sync
+docker compose up -d --build
 ```
 
-### 5. Run Database Migrations
+The application will be live at [http://localhost:8000](http://localhost:8000) with migrations automatically executed.
 
-Apply existing Alembic database migrations:
-
+To view container logs:
 ```bash
-uv run alembic upgrade head
+docker compose logs -f app
 ```
 
-To create a new migration after editing models in `app/models/`:
-
+To stop all services:
 ```bash
-uv run alembic revision --autogenerate -m "create_example_table"
+docker compose down
 ```
 
-### 6. Start Development Server
+#### Option B: Native Local Development
 
-Run the development server with hot-reload enabled:
+1. **Install Dependencies**:
+   ```bash
+   uv sync
+   ```
 
-```bash
-uv run uvicorn main:app --reload
-```
+2. **Start Local Database** (if using Docker for DB only):
+   ```bash
+   docker compose up -d postgres
+   ```
+
+3. **Run Database Migrations**:
+   ```bash
+   uv run alembic upgrade head
+   ```
+
+4. **Start Development Server**:
+   ```bash
+   uv run uvicorn main:app --reload
+   ```
 
 The server will be running at [http://localhost:8000](http://localhost:8000).
 
