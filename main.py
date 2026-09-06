@@ -1,13 +1,17 @@
 from fastapi import FastAPI
 
-app = FastAPI()
+from app.api.auth import auth_router
+from app.core.config import settings
+
+app = FastAPI(
+    title=settings.APP_NAME,
+    openapi_url=f"{settings.API_PREFIX}/openapi.json",
+)
+
+# Register authentication routes under API prefix
+app.include_router(auth_router, prefix=settings.API_PREFIX)
 
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+    return {"message": "Welcome to FastAPI Starter Kit"}
