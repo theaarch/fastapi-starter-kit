@@ -7,7 +7,6 @@ updates:
       interval: "weekly"
       day: "monday"
       time: "03:00"
-      timezone: "Asia/Shanghai"
     open-pull-requests-limit: 10
     groups:
       dev-dependencies:
@@ -24,5 +23,4 @@ updates:
       interval: "weekly"
       day: "monday"
       time: "03:00"
-      timezone: "Asia/Shanghai"
     open-pull-requests-limit: 5

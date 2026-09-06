@@ -23,47 +23,6 @@ A production-ready, highly modern starter kit for building scalable asynchronous
 
 ---
 
-## Project Structure
-
-```
-fastapi-starter-kit/
-├── app/
-│   ├── alembic/                # Alembic database migrations & versions
-│   │   ├── versions/           # Migration revision scripts
-│   │   └── env.py              # Async migration engine runner
-│   ├── api/                    # API route controllers & dependencies
-│   │   ├── auth/               # Authentication endpoints (login, register, profile, etc.)
-│   │   └── dependencies.py     # Shared route dependencies (get_current_user, etc.)
-│   ├── core/                   # Application core configuration & services
-│   │   ├── config.py           # Pydantic Settings & environment parsing
-│   │   ├── database.py         # Async SQLAlchemy engine & session maker
-│   │   └── security.py         # Argon2 hashing & JWT encoding/decoding
-│   ├── models/                 # SQLAlchemy 2.0 ORM models
-│   │   ├── base.py             # DeclarativeBase with constraint naming conventions
-│   │   └── user.py             # User model with server-side timestamps
-│   └── schemas/                # Pydantic v2 schemas for request & response validation
-│       ├── common.py           # Generic response schemas
-│       ├── token.py            # Token & payload schemas
-│       └── user.py             # User request/response schemas
-├── scripts/
-│   └── lint.sh                 # Code checking & auto-formatting shell script
-├── tests/                      # Unit & integration test suite
-│   ├── api/                    # Route & API integration tests
-│   └── core/                   # Core security & configuration tests
-├── .github/
-│   ├── dependabot.yml          # Automated dependency security updates
-│   └── workflows/
-│       └── ci.yml              # Automated GitHub Actions CI pipeline
-├── alembic.ini                 # Alembic configuration file
-├── docker-compose.yml          # Local PostgreSQL container service
-├── Dockerfile                  # Multi-stage production container image definition
-├── main.py                     # FastAPI application factory & root entrypoint
-├── pyproject.toml              # Project dependencies, build system & tool configs
-└── uv.lock                     # Deterministic dependency lockfile
-```
-
----
-
 ## Prerequisites
 
 - **Python**: `>= 3.14`
@@ -104,7 +63,7 @@ Review and adjust `.env` parameters as needed:
 
 ### 3. Start Local Database (Optional via Docker)
 
-Start a local PostgreSQL 16 instance with Docker Compose:
+Start a local PostgreSQL 18 instance with Docker Compose:
 
 ```bash
 docker compose up -d
