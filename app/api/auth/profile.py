@@ -36,7 +36,9 @@ async def update_my_profile(
     db: Annotated[AsyncSession, Depends(get_db)],
 ) -> User:
     if profile_data.email is not None and profile_data.email != current_user.email:
-        stmt = select(User).where(User.email == profile_data.email, User.id != current_user.id)
+        stmt = select(User).where(
+            User.email == profile_data.email, User.id != current_user.id
+        )
         existing_user = (await db.execute(stmt)).scalar_one_or_none()
         if existing_user is not None:
             raise HTTPException(

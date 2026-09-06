@@ -146,3 +146,6 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Ruff cache
+.ruff_cache/

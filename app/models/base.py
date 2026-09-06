@@ -13,4 +13,5 @@ convention = {
 
 class Base(DeclarativeBase):
     """Base declarative class for all SQLAlchemy 2.0 models."""
+
     metadata = MetaData(naming_convention=convention)

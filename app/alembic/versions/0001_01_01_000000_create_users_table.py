@@ -1,10 +1,11 @@
 """create users table
 
 Revision ID: 0001_01_01_000000
-Revises: 
+Revises:
 Create Date: 2026-09-07 00:00:00.000000
 
 """
+
 from collections.abc import Sequence
 
 import sqlalchemy as sa
